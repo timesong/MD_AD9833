@@ -179,7 +179,8 @@ class MD_AD9833
    * \param hold  optional parameter that holds the reset state. Default is false (no hold).
    */
    void reset(bool hold = false);
-
+   void pause(void);
+   void resume(void);
  /**
   * Class Destructor.
   *

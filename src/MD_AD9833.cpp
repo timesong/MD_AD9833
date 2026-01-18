@@ -110,6 +110,20 @@ void MD_AD9833::reset(bool hold)
   }
 }
 
+void MD_AD9833::pause(void) {
+  PRINTS("\npause");
+  bitSet(_regCtl, AD_SLEEP1);
+  bitSet(_regCtl, AD_SLEEP12);
+  spiSend(_regCtl);
+}
+
+void MD_AD9833::resume(void) {
+  PRINTS("\nresume");
+  bitClear(_regCtl, AD_SLEEP1);
+  bitClear(_regCtl, AD_SLEEP12);
+  spiSend(_regCtl);
+}
+
 void MD_AD9833::begin(void)
 // Initialize the AD9833 and then set up safe values for the AD9833 device
 // Procedure from Figure 27 of in the AD9833 Data Sheet
